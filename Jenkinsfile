@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'build.sh'
+                sh './build.sh'
                 archiveArtifacts artifacts: '*.txt', fingerprint: true 
             }
         }
