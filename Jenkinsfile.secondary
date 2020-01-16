@@ -1,0 +1,26 @@
+pipeline {
+    agent {
+        docker {
+            image 'alpine:3'
+        }
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh './build.sh'
+                archiveArtifacts artifacts: '*.txt', fingerprint: true 
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Secondary Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Secondary Deploying....'
+            }
+        }
+    }
+}
